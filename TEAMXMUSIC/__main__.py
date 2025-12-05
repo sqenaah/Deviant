@@ -15,7 +15,8 @@ from config import BANNED_USERS
 
 
 async def init():
-    # Assistant sessions are now completely optional - removed validation
+    # Assistant sessions are now completely optional - validation removed (final)
+    LOGGER(__name__).info("🎵 Starting TeamX Music Bot - Assistant validation disabled")
     pass
 
     # ✅ Try to fetch cookies at startup

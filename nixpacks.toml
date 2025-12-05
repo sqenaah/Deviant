@@ -1,5 +1,5 @@
 [phases.setup]
-nixPkgs = ["python310", "ffmpeg", "git", "gcc", "openssl"]
+nixPkgs = ["python311", "ffmpeg", "git", "gcc", "openssl"]
 
 [phases.install]
 cmds = [
@@ -9,4 +9,4 @@ cmds = [
 ]
 
 [start]
-cmd = "/opt/venv/bin/python -m TEAMXMUSIC"
+cmd = "/opt/venv/bin/python3 -m TEAMXMUSIC"
