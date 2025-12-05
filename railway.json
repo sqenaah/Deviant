@@ -4,8 +4,7 @@
   },
   "deploy": {
     "startCommand": "python -m TEAMXMUSIC",
-    "restartPolicyType": "ON_FAILURE",
-    "healthcheckPath": "/health"
+    "restartPolicyType": "ON_FAILURE"
   },
   "variables": {
     "API_ID": "27638882",
