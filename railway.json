@@ -3,6 +3,6 @@
     "builder": "NIXPACKS"
   },
   "deploy": {
-    "startCommand": "python3 -m TEAMXMUSIC"
+    "startCommand": "python -m TEAMXMUSIC"
   }
 }
