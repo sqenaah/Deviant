@@ -1,7 +1,4 @@
 {
-  "build": {
-    "builder": "dockerfile"
-  },
   "deploy": {
     "startCommand": "python3 -m TEAMXMUSIC"
   },
