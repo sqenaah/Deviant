@@ -15,15 +15,16 @@ from config import BANNED_USERS
 
 
 async def init():
-    if (
-        not config.STRING1
-        and not config.STRING2
-        and not config.STRING3
-        and not config.STRING4
-        and not config.STRING5
-    ):
-        LOGGER(__name__).error("ᴀssɪsᴛᴀɴᴛ sᴇssɪᴏɴ ɴᴏᴛ ғɪʟʟᴇᴅ, ᴘʟᴇᴀsᴇ ғɪʟʟ ᴀ ᴘʏʀᴏɢʀᴀᴍ sᴇssɪᴏɴ...")
-        exit()
+    # Assistant sessions are now optional - commented out validation
+    # if (
+    #     not config.STRING1
+    #     and not config.STRING2
+    #     and not config.STRING3
+    #     and not config.STRING4
+    #     and not config.STRING5
+    # ):
+    #     LOGGER(__name__).error("ᴀssɪsᴛᴀɴᴛ sᴇssɪᴏɴ ɴᴏᴛ ғɪʟʟᴇᴅ, ᴘʟᴇᴀsᴇ ғɪʟʟ ᴀ ᴘʏʀᴏɢʀᴀᴍ sᴇssɪᴏɴ...")
+    #     exit()
 
     # ✅ Try to fetch cookies at startup
     try:
