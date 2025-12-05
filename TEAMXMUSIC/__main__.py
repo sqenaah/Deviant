@@ -15,7 +15,8 @@ from config import BANNED_USERS
 
 
 async def init():
-    # Assistant sessions are now optional - commented out validation
+    # Assistant sessions are now optional - commented out validation (updated)
+    # Disabled assistant session requirement for Railway deployment
     # if (
     #     not config.STRING1
     #     and not config.STRING2
