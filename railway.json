@@ -3,6 +3,11 @@
     "builder": "NIXPACKS"
   },
   "deploy": {
-    "startCommand": "python -m TEAMXMUSIC"
+    "startCommand": "python -m TEAMXMUSIC",
+    "healthcheckPath": "/",
+    "restartPolicyType": "ON_FAILURE"
+  },
+  "variables": {
+    "STRING1": "AgGlvGIAK6Y0IgR0Xq2j3gj6HC2q1gcXZorKLbMxykXhIOsbkk5YnMcop7qTUvXR0-C8qvhhcPxX7izIB366ddToFLLVkKxdF0Z_49Gc0CmqpXpkF8mR4PdWFQD_oaNPQZp6PsOO6xBPCPzTlOLFoRumtTSzCmya6y4f0h_HJ_y886tUATSmrVbCle3BwhLuWbdsgmOT_XrwTZgubX-kH1tzNJigEriaRkehG6Tl4EiVWSO_GxkyV-iCUV_L1diObCq-QZRSTLuFT3BmCkrz9dTfZWUMyiqqXKYEziFPFTsYbMnOo-lX7seshjnGzKctMpr7V4vzqJnpFkETSgh8xdpxd0Q3yAAAAAHya_vDAA"
   }
 }
