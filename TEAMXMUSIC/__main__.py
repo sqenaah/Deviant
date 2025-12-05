@@ -15,17 +15,8 @@ from config import BANNED_USERS
 
 
 async def init():
-    # Assistant sessions are now optional - commented out validation (updated)
-    # Disabled assistant session requirement for Railway deployment
-    # if (
-    #     not config.STRING1
-    #     and not config.STRING2
-    #     and not config.STRING3
-    #     and not config.STRING4
-    #     and not config.STRING5
-    # ):
-    #     LOGGER(__name__).error("ᴀssɪsᴛᴀɴᴛ sᴇssɪᴏɴ ɴᴏᴛ ғɪʟʟᴇᴅ, ᴘʟᴇᴀsᴇ ғɪʟʟ ᴀ ᴘʏʀᴏɢʀᴀᴍ sᴇssɪᴏɴ...")
-    #     exit()
+    # Assistant sessions are now completely optional - removed validation
+    pass
 
     # ✅ Try to fetch cookies at startup
     try:
