@@ -1,5 +1,5 @@
 [phases.setup]
-nixPkgs = ["...", "ffmpeg", "git", "build-essential", "libssl-dev"]
+nixPkgs = ["python311", "ffmpeg", "git", "gcc", "gfortran", "openssl"]
 
 [phases.install]
 cmds = [
