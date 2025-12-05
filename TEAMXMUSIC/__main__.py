@@ -15,10 +15,12 @@ from config import BANNED_USERS
 
 
 async def init():
-    # Assistant sessions are now completely optional - validation removed (final version)
-    LOGGER(__name__).info("🎵 TeamX Music Bot v2.0 - Assistant validation completely disabled - " + str(__import__('time').time()))
-    # Validation code completely removed - no more assistant session checks
-    pass
+    # 🚀 TEAMX MUSIC BOT V3.0 - ASSISTANT VALIDATION PERMANENTLY DISABLED 🚀
+    LOGGER(__name__).error("🎯 NEW CODE LOADED - Assistant validation is DISABLED - Bot will continue without assistant checks")
+    LOGGER(__name__).info("🔥 TeamX Music Bot v3.0 - No assistant validation - Timestamp: " + str(__import__('time').time()))
+
+    # ❌ OLD VALIDATION CODE COMPLETELY REMOVED ❌
+    # No more assistant session checks - bot runs with or without assistants
 
     # ✅ Try to fetch cookies at startup
     try:
