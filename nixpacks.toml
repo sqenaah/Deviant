@@ -1,3 +1,4 @@
+# TeamX Music Bot - Final Configuration - No assistant validation
 [phases.setup]
 nixPkgs = ["python310", "ffmpeg", "git", "gcc", "openssl"]
 
