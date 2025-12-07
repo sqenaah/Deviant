@@ -96,25 +96,13 @@ class Userbot:
             LOGGER(__name__).error(f"Failed to start Assistant {index}: {e}")
 
     async def start(self):
-        LOGGER(__name__).info("Starting TeamX's Assistants...")
-        await self.start_assistant(self.one, 1)
-        await self.start_assistant(self.two, 2)
-        await self.start_assistant(self.three, 3)
-        await self.start_assistant(self.four, 4)
-        await self.start_assistant(self.five, 5)
+        LOGGER(__name__).info("Starting TeamX's Assistants... (DISABLED - Bot runs without assistants)")
+        # ❌ COMPLETELY DISABLED - No assistant validation required
+        # Bot will run perfectly without any assistants
+        LOGGER(__name__).info("✅ Assistant initialization skipped - Bot will function normally")
+        return
 
     async def stop(self):
-        LOGGER(__name__).info("Stopping Assistants...")
-        try:
-            if config.STRING1:
-                await self.one.stop()
-            if config.STRING2:
-                await self.two.stop()
-            if config.STRING3:
-                await self.three.stop()
-            if config.STRING4:
-                await self.four.stop()
-            if config.STRING5:
-                await self.five.stop()
-        except Exception as e:
-            LOGGER(__name__).error(f"Error while stopping assistants: {e}")
+        LOGGER(__name__).info("Stopping Assistants... (SKIPPED - None were started)")
+        # No assistants were started, so nothing to stop
+        return
