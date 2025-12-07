@@ -1,5 +1,6 @@
 aiofiles
 aiohttp
+flask
 apscheduler
 asyncio
 bing_image_downloader
