@@ -58,8 +58,13 @@ async def init():
 
     LOGGER("TEAMXMUSIC.plugins").info("𝐓𝐞𝐚𝐦𝐗's ᴍᴏᴅᴜʟᴇs ʟᴏᴀᴅᴇᴅ...")
 
+    LOGGER(__name__).info("🔄 Starting userbot...")
     await userbot.start()
+    LOGGER(__name__).info("✅ Userbot started successfully")
+
+    LOGGER(__name__).info("🔄 Starting JARVIS...")
     await JARVIS.start()
+    LOGGER(__name__).info("✅ JARVIS started successfully")
 
     try:
         await JARVIS.stream_call("http://docs.evostream.com/sample_content/assets/sintel1m720p.mp4")
