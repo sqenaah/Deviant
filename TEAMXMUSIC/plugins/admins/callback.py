@@ -106,6 +106,14 @@ async def handle_upvote(callback: CallbackQuery, chat_id: int, counter, _):
 async def unban_assistant(_, callback: CallbackQuery):
     chat_id = callback.message.chat.id
     userbot = await get_assistant(chat_id)
+
+    # ❌ DISABLED: Skip if no assistant available
+    if userbot is None:
+        return await callback.answer(
+            "No assistant available - Bot functions without assistants",
+            show_alert=True,
+        )
+
     try:
         await app.unban_chat_member(chat_id, userbot.id)
         await callback.answer(

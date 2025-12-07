@@ -69,6 +69,11 @@ async def set_assistant_new(chat_id, number):
 async def set_assistant(chat_id):
     from TEAMXMUSIC.core.userbot import assistants
 
+    # ❌ DISABLED: No assistants available - return None
+    if not assistants:
+        LOGGER(__name__).warning(f"No assistants available for chat {chat_id} - Bot functions without assistants")
+        return None
+
     ran_assistant = random.choice(assistants)
     assistantdict[chat_id] = ran_assistant
     await assdb.update_one(
@@ -82,6 +87,11 @@ async def set_assistant(chat_id):
 
 async def get_assistant(chat_id: int) -> str:
     from TEAMXMUSIC.core.userbot import assistants
+
+    # ❌ DISABLED: No assistants available - return None
+    if not assistants:
+        LOGGER(__name__).warning(f"No assistants available for chat {chat_id} - Bot functions without assistants")
+        return None
 
     assistant = assistantdict.get(chat_id)
     if not assistant:

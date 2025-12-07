@@ -121,31 +121,36 @@ def PlayWrapper(command):
 
         if not await is_active_chat(chat_id):
             userbot = await get_assistant(chat_id)
-            try:
-                try:
-                    member = await app.get_chat_member(chat_id, userbot.id)
-                except ChatAdminRequired:
-                    return await message.reply_text(_["call_1"])
 
-                if member.status in (
-                    ChatMemberStatus.BANNED,
-                    ChatMemberStatus.RESTRICTED,
-                ):
-                    return await message.reply_text(
-                        _["call_2"].format(
-                            app.mention, userbot.id, userbot.name, userbot.username
-                        ),
-                        reply_markup=InlineKeyboardMarkup(
-                            [
+            # ❌ DISABLED: Skip assistant validation if no assistants available
+            if userbot is None:
+                LOGGER(__name__).warning(f"No assistant available for chat {chat_id} - Skipping validation")
+            else:
+                try:
+                    try:
+                        member = await app.get_chat_member(chat_id, userbot.id)
+                    except ChatAdminRequired:
+                        return await message.reply_text(_["call_1"])
+
+                    if member.status in (
+                        ChatMemberStatus.BANNED,
+                        ChatMemberStatus.RESTRICTED,
+                    ):
+                        return await message.reply_text(
+                            _["call_2"].format(
+                                app.mention, userbot.id, userbot.name, userbot.username
+                            ),
+                            reply_markup=InlineKeyboardMarkup(
                                 [
-                                    InlineKeyboardButton(
-                                        text="๏ 𝗨ɴʙᴀɴ 𝗔ssɪsᴛᴀɴᴛ ๏",
-                                        callback_data="unban_assistant",
-                                    )
+                                    [
+                                        InlineKeyboardButton(
+                                            text="๏ 𝗨ɴʙᴀɴ 𝗔ssɪsᴛᴀɴᴛ ๏",
+                                            callback_data="unban_assistant",
+                                        )
+                                    ]
                                 ]
-                            ]
-                        ),
-                    )
+                            ),
+                        )
             except UserNotParticipant:
                 if chat_id in links:
                     invitelink = links[chat_id]

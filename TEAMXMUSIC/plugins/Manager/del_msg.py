@@ -98,6 +98,12 @@ async def deleteall_callback(client, callback: CallbackQuery):
     await _safe_edit(callback, "⏳ Deleting all messages...")
 
     assistant = await get_assistant(chat_id)
+
+    # ❌ DISABLED: Skip if no assistant available
+    if assistant is None:
+        await _safe_edit(callback, "No assistant available - Cannot delete messages")
+        return
+
     ass_me = await assistant.get_me()
     ass_id = ass_me.id
 
