@@ -5,8 +5,9 @@ from pyrogram import idle
 from pytgcalls.exceptions import NoActiveGroupCall
 
 import config
-from TEAMXMUSIC import LOGGER, app, userbot
+from TEAMXMUSIC import LOGGER, app
 from TEAMXMUSIC.core.call import JARVIS
+from TEAMXMUSIC.core.userbot import Userbot
 from TEAMXMUSIC.health import start_health_server
 from TEAMXMUSIC.misc import sudo
 from TEAMXMUSIC.plugins import ALL_MODULES
@@ -24,6 +25,9 @@ async def init():
     LOGGER(__name__).info("🏥 Starting health check server...")
     start_health_server()
     LOGGER(__name__).info("🏥 Health check server started successfully")
+
+    # ✅ Create userbot instance (safe - no validation during import)
+    userbot = Userbot()
 
     # ❌ OLD VALIDATION CODE COMPLETELY REMOVED ❌
     # No more assistant session checks - bot runs with or without assistants

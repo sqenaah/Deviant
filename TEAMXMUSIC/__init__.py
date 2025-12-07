@@ -12,7 +12,8 @@ dbb()
 heroku()
 
 app = JARVIS()
-userbot = Userbot()
+# ❌ DISABLED: Don't create userbot during module import to prevent session validation
+userbot = None
 
 
 from .platforms import *
