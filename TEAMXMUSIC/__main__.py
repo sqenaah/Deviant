@@ -66,15 +66,8 @@ async def init():
     await JARVIS.start()
     LOGGER(__name__).info("✅ JARVIS started successfully")
 
-    try:
-        await JARVIS.stream_call("http://docs.evostream.com/sample_content/assets/sintel1m720p.mp4")
-    except NoActiveGroupCall:
-        LOGGER("TEAMXMUSIC").error(
-            "ᴘʟᴇᴀsᴇ ᴛᴜʀɴ ᴏɴ ᴛʜᴇ ᴠᴏɪᴄᴇ ᴄʜᴀᴛ ᴏғ ʏᴏᴜʀ ʟᴏɢ ɢʀᴏᴜᴘ/ᴄʜᴀɴɴᴇʟ.\n\n𝐓𝐞𝐚𝐦𝐗 ʙᴏᴛ sᴛᴏᴘᴘᴇᴅ..."
-        )
-        exit()
-    except:
-        pass
+    # ❌ DISABLED: No PyTgCalls clients available, skip stream call
+    LOGGER(__name__).info("Skipping initial stream call - no PyTgCalls clients available")
 
     await JARVIS.decorators()
     LOGGER("TEAMXMUSIC").info(

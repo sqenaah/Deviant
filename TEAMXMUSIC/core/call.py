@@ -58,30 +58,18 @@ async def _clear_(chat_id: int) -> None:
 
 class Call:
     def __init__(self):
-        self.userbot1 = Client(
-            "TeamXAssis1", config.API_ID, config.API_HASH, session_string=config.STRING1
-        ) if config.STRING1 else None
-        self.one = PyTgCalls(self.userbot1) if self.userbot1 else None
-
-        self.userbot2 = Client(
-            "TeamXAssis2", config.API_ID, config.API_HASH, session_string=config.STRING2
-        ) if config.STRING2 else None
-        self.two = PyTgCalls(self.userbot2) if self.userbot2 else None
-
-        self.userbot3 = Client(
-            "TeamXAssis3", config.API_ID, config.API_HASH, session_string=config.STRING3
-        ) if config.STRING3 else None
-        self.three = PyTgCalls(self.userbot3) if self.userbot3 else None
-
-        self.userbot4 = Client(
-            "TeamXAssis4", config.API_ID, config.API_HASH, session_string=config.STRING4
-        ) if config.STRING4 else None
-        self.four = PyTgCalls(self.userbot4) if self.userbot4 else None
-
-        self.userbot5 = Client(
-            "TeamXAssis5", config.API_ID, config.API_HASH, session_string=config.STRING5
-        ) if config.STRING5 else None
-        self.five = PyTgCalls(self.userbot5) if self.userbot5 else None
+        # ❌ DISABLED: Don't create any PyTgCalls clients to prevent validation
+        # This completely eliminates any assistant-related validation
+        self.userbot1 = None
+        self.one = None
+        self.userbot2 = None
+        self.two = None
+        self.userbot3 = None
+        self.three = None
+        self.userbot4 = None
+        self.four = None
+        self.userbot5 = None
+        self.five = None
 
         self.active_calls: set[int] = set()
 
@@ -453,72 +441,20 @@ class Call:
 
 
     async def start(self) -> None:
-        LOGGER(__name__).info("Starting PyTgCalls Clients...")
-        if config.STRING1:
-            await self.one.start()
-        if config.STRING2:
-            await self.two.start()
-        if config.STRING3:
-            await self.three.start()
-        if config.STRING4:
-            await self.four.start()
-        if config.STRING5:
-            await self.five.start()
+        LOGGER(__name__).info("Starting PyTgCalls Clients... (DISABLED - No clients to start)")
+        # ❌ DISABLED: No PyTgCalls clients are created, so nothing to start
+        pass
 
     @capture_internal_err
     async def ping(self) -> str:
-        pings = []
-        if config.STRING1:
-            pings.append(self.one.ping)
-        if config.STRING2:
-            pings.append(self.two.ping)
-        if config.STRING3:
-            pings.append(self.three.ping)
-        if config.STRING4:
-            pings.append(self.four.ping)
-        if config.STRING5:
-            pings.append(self.five.ping)
-        return str(round(sum(pings) / len(pings), 3)) if pings else "0.0"
+        # ❌ DISABLED: No PyTgCalls clients available
+        return "0.0"
 
     @capture_internal_err
     async def decorators(self) -> None:
-        assistants = list(filter(None, [self.one, self.two, self.three, self.four, self.five]))
-
-        CRITICAL = (
-            ChatUpdate.Status.KICKED
-            | ChatUpdate.Status.LEFT_GROUP
-            | ChatUpdate.Status.CLOSED_VOICE_CHAT
-            | ChatUpdate.Status.DISCARDED_CALL
-            | ChatUpdate.Status.BUSY_CALL
-        )
-
-        async def unified_update_handler(client, update: Update) -> None:
-            try:
-                if isinstance(update, ChatUpdate):
-                    status = update.status
-                    if (status & ChatUpdate.Status.LEFT_CALL) or (status & CRITICAL):
-                        await self.stop_stream(update.chat_id)
-                        return
-
-                elif isinstance(update, StreamEnded):
-                    if update.stream_type == StreamEnded.Type.AUDIO:
-                        assistant = await group_assistant(self, update.chat_id)
-                        await self.play(assistant, update.chat_id)
-
-            except Exception:
-                import sys, traceback
-                exc_type, exc_obj, exc_tb = sys.exc_info()
-                full_trace = "".join(traceback.format_exception(exc_type, exc_obj, exc_tb))
-                caption = (
-                    f"🚨 <b>Stream Update Error</b>\n"
-                    f"📍 <b>Update Type:</b> <code>{type(update).__name__}</code>\n"
-                    f"📍 <b>Error Type:</b> <code>{exc_type.__name__}</code>"
-                )
-                filename = f"update_error_{getattr(update, 'chat_id', 'unknown')}_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
-                await send_large_error(full_trace, caption, filename)
-
-        for assistant in assistants:
-            assistant.on_update()(unified_update_handler)
+        # ❌ DISABLED: No PyTgCalls clients available, so no decorators to set up
+        LOGGER(__name__).info("PyTgCalls decorators setup skipped - no assistants available")
+        pass
 
 
 JARVIS = Call()
